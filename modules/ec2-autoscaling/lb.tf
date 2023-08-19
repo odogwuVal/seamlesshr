@@ -1,10 +1,11 @@
 # Create a new load balancer
 resource "aws_lb" "bar" {
   name               = "${var.project}-lb"
-  internal = false
-  load_balancer_type = "application"
-  security_groups = [ aws_security_group.lb-sg.id ]
-  subnets = [ for subnet in aws_subnet.public_subnet : subnet.id ]
+  internal = var.internal == "true" ? true : false
+  load_balancer_type = var.load_balancer_type == "" ? "application" : var.load_balancer_type
+  security_groups = [var.security_groups]
+  subnets = var.lb_subnets
+  # [ for subnet in aws_subnet.public_subnet : subnet.id ]
 
   tags = local.tags
 }
@@ -12,18 +13,19 @@ resource "aws_lb" "bar" {
 # create a target group
 resource "aws_lb_target_group" "test" {
   name     = "${var.project}-lb-tg"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = aws_vpc.name.id
+  port     = var.target_port == "" ? 80 : var.target_port
+  protocol = var.target_protocol == "" ? "HTTP" : var.target_protocol
+  vpc_id   = var.vpc_id
 }
 
 #create a listener on HTTPS
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.bar.arn
-  port              = "443"
-  protocol          = "HTTPS"
+  port              = var.listener_port == "" ? "443" : var.listener_port
+  protocol          = var.listener_protocol == "" ? "HTTPS" : var.listener_protocol
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = "arn:aws:acm:us-east-1:651611223190:certificate/16b08c07-e93a-43f2-a88c-6000abb1f40c"
+  certificate_arn   = var.certificate_arn
+  # "arn:aws:acm:us-east-1:651611223190:certificate/16b08c07-e93a-43f2-a88c-6000abb1f40c"
 
   default_action {
     type             = "forward"
@@ -34,15 +36,15 @@ resource "aws_lb_listener" "front_end" {
 # redirect HTTP to HTTPS
 resource "aws_lb_listener" "front_end_redirect" {
   load_balancer_arn = aws_lb.bar.arn
-  port              = "80"
-  protocol          = "HTTP"
+  port              = var.target_port == "" ? 80 : var.target_port
+  protocol          = var.target_protocol == "" ? "HTTP" : var.target_protocol
   
   default_action {
     type             = "redirect"
     
     redirect {
-      port = "443"
-      protocol = "HTTPS"
+      port = var.listener_port == "" ? "443" : var.listener_port
+      protocol = var.listener_protocol == "" ? "HTTPS" : var.listener_protocol
       status_code = "HTTP_301"
     }
   }

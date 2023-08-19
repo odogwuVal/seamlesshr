@@ -1,31 +1,63 @@
-#key pair
-variable "key_name" {
+variable "owners" {
+  type = string
+  default = "651611223190"
+}
+
+# key variables
+variable "var.key_name" {
+  type = string
+}
+
+# autoscaling group
+variable "min_size" {
+  type = number
+}
+
+variable "desired_capacity" {
+  type = number
+}
+
+variable "max_size" {
+  type = number
+}
+
+variable "vpc_zone_identifier" {}
+variable "adjustment_type" {}
+variable "scaling_adjustment" {}
+variable "cooldown" {}
+variable "policy_type" {}
+variable "comparison_operator" {}
+variable "evaluation_periods" {}
+variable "metric_name" {}
+variable "period" {}
+variable "statistic" {}
+variable "threshold" {}
+variable "scale_down_adjustment_type" {}
+variable "scale_down_scaling_adjustment" {}
+variable "scale_down_comparison_operator" {}
+variable "scale_down_threshold" {}
+
+variable "internal" {
+  type = string
+  default = "false"
+}
+
+variable "load_balancer_type" {
   type = string
   default = ""
 }
 
-#security group
-variable "lg_ports" {
+variable "security_groups" {}
+variable "lb_subnets" {}
+variable "target_port" {}
+variable "target_protocol" {}
+variable "vpc_id" {}
+variable "listener_port" {}
+variable "listener_protocol" {}
+variable "certificate_arn" {}
+variable "ssh_ports" {
   type = list(number)
-  default = [80, 443]
+  default = [22]
 }
-
-#security group
-variable "instance_ports" {
-  type = list(number)
-  default = [80, 22]
-}
-
-
-#locals
-variable "createdby" {
-  type = string
-}
-
-variable "project" {}
-
-
-#asg
-variable "max_size" {}
-variable "min_size" {}
-variable "desired_capacity" {}
+variable "allowed_cidrs" {}
+variable "source_security_group_id" {}

@@ -1,6 +1,6 @@
 {
     "variables" : {
-        "ami_name" : "jenkins-worker",
+        "ami_name" : "ec2-ami",
         "region" : "us-east-2",
         "source_ami" : "ami-024e6efaf93d85776",
         "instance_type": "t2.micro"
@@ -16,11 +16,6 @@
             "ami_description" : "ec2-ami",
             "force_deregister": "true",
             "force_delete_snapshot": "true",
-            "launch_block_device_mappings": [ {
-                "device_name": "/dev/xvda",
-                "volume_size": 10,
-                "delete_on_termination": true
-            } ],
             "run_tags" : {
                 "Name" : "ec2-ami"
             }

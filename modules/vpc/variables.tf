@@ -29,12 +29,6 @@ variable "private-subnets" {
   }
 }
 
-#ubuntu image
-variable "owners" {
-  type = string
-  default = "651611223190"
-}
-
 #security group
 variable "lg_ports" {
   type = list(number)

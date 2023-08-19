@@ -2,5 +2,6 @@ module "vpc" {
   source = "../modules/vpc"
   project = "seamless_HR"
   createdby = "Madu Valentine"
-  cidr_block = "172.30.0.0/16"
+  cidr_block = var.cidr_block
+  lg_ports =  var.lg_ports
 }

@@ -33,4 +33,5 @@ module "asg" {
   certificate_arn                = "arn:aws:acm:us-east-1:651611223190:certificate/16b08c07-e93a-43f2-a88c-6000abb1f40c"
   allowed_cidrs                  = ["154.120.83.47/32"]
   source_security_group_id       = module.vpc.sg_id
+  depends_on = [ module.vpc ]
 }

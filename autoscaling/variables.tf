@@ -1,9 +1,9 @@
 variable "cidr_block" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "lg_ports" {
-  type = list(number)
+  type    = list(number)
   default = []
 }

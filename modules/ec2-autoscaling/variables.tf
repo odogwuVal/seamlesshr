@@ -4,7 +4,7 @@ variable "owners" {
 }
 
 # key variables
-variable "var.key_name" {
+variable "key_name" {
   type = string
 }
 
@@ -32,7 +32,6 @@ variable "metric_name" {}
 variable "period" {}
 variable "statistic" {}
 variable "threshold" {}
-variable "scale_down_adjustment_type" {}
 variable "scale_down_scaling_adjustment" {}
 variable "scale_down_comparison_operator" {}
 variable "scale_down_threshold" {}
@@ -61,3 +60,5 @@ variable "ssh_ports" {
 }
 variable "allowed_cidrs" {}
 variable "source_security_group_id" {}
+variable "project" {}
+variable "createdby" {}

@@ -39,7 +39,7 @@ resource "local_file" "private_key" {
 # Create a launch template
 resource "aws_launch_template" "my_template" {
     name = "${var.project}-tpl"
-    image_id = data.aws_ami.ubuntu_image.image_id
+    image_id = data.aws_ami.ec2_image.image_id
     instance_type = "t2.micro"
     key_name = aws_key_pair.key_pair.key_name
     vpc_security_group_ids  = [ aws_security_group.ec2-sg.id ]
@@ -112,7 +112,7 @@ resource "aws_cloudwatch_metric_alarm" "scale_up_alarm" {
 resource "aws_autoscaling_policy" "scale_down" {
   name                   = "${var.project}-asg-scale-down"
   autoscaling_group_name = aws_autoscaling_group.custom_autoscalar.name
-  adjustment_type        = var.scale_down_adjustment_type == "" ? "ChangeInCapacity" : var.scale_down_adjustment_type
+  adjustment_type        = var.adjustment_type == "" ? "ChangeInCapacity" : var.adjustment_type
   scaling_adjustment     = var.scale_down_scaling_adjustment == "" ? "-1" : var.scale_down_scaling_adjustment # decreasing instance by 1 
   cooldown               = var.cooldown == "" ? "150" : var.cooldown
   policy_type            = var.policy_type == "" ? "SimpleScaling" : var.policy_type

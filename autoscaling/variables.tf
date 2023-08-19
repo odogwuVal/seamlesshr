@@ -7,3 +7,11 @@ variable "lg_ports" {
   type    = list(number)
   default = []
 }
+
+variable "certificate_arn" {
+  type = string
+}
+
+variable "allowed_cidrs" {
+  type = string
+}

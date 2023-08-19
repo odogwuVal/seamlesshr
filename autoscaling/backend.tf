@@ -13,9 +13,3 @@ terraform {
     encrypt        = true
   }
 }
-
-
-
-dynamodb_table_id = "lock"
-dynamodb_table_name = "lock"
-s3_bucket_id = "terraform-20230819071902000000000001"

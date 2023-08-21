@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  sample-node-app:
+    restart: always
+    image:  odogwuval/seamlesshr:latest
+    container_name: seamless
+    ports:
+      - "80:3000"

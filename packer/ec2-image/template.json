@@ -23,6 +23,11 @@
     ],
     "provisioners" : [
         {
+            "type" : "file",
+            "source" : "docker-compose.yaml",
+            "destination" : "/home/ubuntu"
+        },
+        {
             "type" : "shell",
             "script" : "../script/setup.sh",
             "execute_command" : "sudo -E -S sh '{{ .Path }}'"

@@ -62,3 +62,4 @@ variable "allowed_cidrs" {}
 variable "source_security_group_id" {}
 variable "project" {}
 variable "createdby" {}
+variable "user_data" {}

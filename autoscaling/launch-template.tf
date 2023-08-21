@@ -33,6 +33,5 @@ module "asg" {
   certificate_arn                = var.certificate_arn
   allowed_cidrs                  = [var.allowed_cidrs]
   source_security_group_id       = module.vpc.sg_id
-  user_data                      = file("./userdata/userdata.tpl")
   depends_on                     = [module.vpc]
 }

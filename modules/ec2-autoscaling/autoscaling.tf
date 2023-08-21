@@ -43,7 +43,7 @@ resource "aws_launch_template" "my_template" {
     instance_type = "t2.micro"
     key_name = aws_key_pair.key_pair.key_name
     vpc_security_group_ids  = [ aws_security_group.ec2-sg.id ]
-    user_data = var.user_data
+    # user_data = var.user_data
 
     tag_specifications {
       resource_type = "instance"

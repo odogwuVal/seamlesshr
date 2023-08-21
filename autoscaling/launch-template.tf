@@ -7,7 +7,7 @@ module "asg" {
   min_size                       = 1
   desired_capacity               = 1
   max_size                       = 5
-  vpc_zone_identifier            = module.vpc.private_subnet_id
+  vpc_zone_identifier            = module.vpc.public_subnet_id
   adjustment_type                = "ChangeInCapacity"
   scaling_adjustment             = "1"
   cooldown                       = "150"

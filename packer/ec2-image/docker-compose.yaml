@@ -3,6 +3,6 @@ services:
   sample-node-app:
     restart: always
     image:  odogwuval/seamlesshr:latest
-    container_name: seamless
+    container_name: seamlesshr
     ports:
       - "80:3000"

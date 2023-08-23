@@ -10,3 +10,5 @@ Go to the `packer` folder and `ec2-image` and change the values in `template.jso
 `packer validate template.json` (to ensure that the configuration is correct)
 
 `packer build template.json` (to build the AMI)
+
+![ec2 AMI](ami.png)

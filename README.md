@@ -57,5 +57,7 @@ module "vpc" {
 }
 ```
 `terraform init` (download all the plugins)
+
 `terraform plan --var-file=terraform.tfvars` (to plan and see what changes are to be made)
+
 `terraform apply --var-file=terraform.tfvars`

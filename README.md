@@ -20,7 +20,18 @@ Terraform is an infrastructure as code tool that lets you define both cloud and 
 I have leverage terraform modules to be able to ensure re-usability and a uniform configuration across multiple environments or regions.
 th configuration for the individual modules can be located in the `modules` directory but the creation of resource can be done through the `autoscaling` directory.
 the `backend.tf` is a definition of the s3 bucket and dynamodb(for mantaining state lock) resources which I used as a remote backend.
+
 example usage:
+```terraform
+module "vpc" {
+  source     = "../modules/vpc"
+  project    = "seamless_HR"
+  createdby  = "Madu Valentine"
+  cidr_block = var.cidr_block
+  lg_ports   = var.lg_ports
+}
+```
+
 ```terraform
   module "asg" {
   source                         = "../modules/ec2-autoscaling"

@@ -12,3 +12,7 @@ Go to the `packer` folder and `ec2-image` and change the values in `template.jso
 `packer build template.json` (to build the AMI)
 
 ![ec2 AMI](ami.png)
+
+## Terraform
+Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share.Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
+<a href="https://developer.hashicorp.com/terraform/intro" target="_blank">more</a>

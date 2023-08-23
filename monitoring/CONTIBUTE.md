@@ -21,6 +21,8 @@ Kibana visualizes the results of the analysis.
 What does the ELK stack do?
 The ELK stack is used to solve a wide range of problems, including log analytics, document search, security information and event management (SIEM), and observability. It provides the search and analytics engine, data ingestion, and visualization.
 
+Apart from the core components mentioned, we have a filebeat which is a lighter log shipper. I have used the filebeat to ship the logs directly to elasticsearch in our case. Apart from filebeat, there are other beats designed to ship various kinds of information eg: metricbeat, packetbeats etc.
+
 ## Why is the ELK stack important?
 The ELK stack fulfills a need in the log analytics space. As more and more of your IT infrastructure moves to public clouds, you need a log management and analytics solution to monitor this infrastructure and process any server logs, application logs, and clickstreams. The ELK stack provides a simple yet robust log analysis solution for your developers and DevOps engineers to gain valuable insights on failure diagnosis, application performance, and infrastructure monitoring—at a fraction of the price.
 
